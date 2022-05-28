@@ -13,7 +13,11 @@ export default function Breeds(): JSX.Element {
     <div>
       <Container>
         <h1 class="text-6xl mt-12 mb-16 font-bold">Breeds</h1>
-        <Suspense fallback={<div>Loading...</div>}>
+        <Suspense
+          fallback={
+            <div>Loading (using a generic suspense, how cool is that!)...</div>
+          }
+        >
           <ul class="grid grid-cols-3 gap-4">
             <For each={breeds()}>{(breed) => <BreedCard breed={breed} />}</For>
           </ul>

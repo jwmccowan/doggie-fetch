@@ -8,9 +8,8 @@ interface BreedFactProps {
 }
 
 function BreedFact(props: BreedFactProps): JSXElement {
-  console.log("eggs", props.factName, props.fact);
-  const rand = Math.random() * 100;
-  if (rand < 5) {
+  const rand = Math.random() * 20;
+  if (rand < 1) {
     throw new Error("Uh oh, random crash!");
   }
   if (!props.fact && !props.showNoData) {
@@ -33,7 +32,23 @@ export function BreedCard(props: BreedCardProps): JSXElement {
     <div class="bg-white shadow-md rounded p-8">
       <div class="flex flex-col items-center gap-4">
         <ErrorBoundary
-          fallback={() => <div>Sorry, something went wrong :(</div>}
+          fallback={() => (
+            <div>
+              <h2 class="text-red-700 text-3xl text-medium mb-4">
+                Sorry, something went wrong :(
+              </h2>
+              <div class="text-sm text-gray-500">
+                <p class="mb-2">
+                  Maybe I should be more clear. Every card rolls a d20, and this
+                  one rolled a natural 1..
+                </p>
+                <p>
+                  This error was caught by an error boundary.. Built right into
+                  solidjs!
+                </p>
+              </div>
+            </div>
+          )}
         >
           <img
             class="w-32 h-32 rounded-full m-4"
