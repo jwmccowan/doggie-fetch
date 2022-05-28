@@ -59,7 +59,8 @@ export function BreedCard(props: BreedCardProps): JSXElement {
             <div class="h-40 w-40 bg-purple-700 rounded-full absolute top-auto bottom-auto right-auto left-auto mt-7 mr-6" />
             <img
               class="object-cover w-32 h-32 rounded-full z-10 border-8 border-white shadow mt-6"
-              src={props.breed.image.url}
+              // the search api does not return an image object so right now we hard code the url
+              src={`https://cdn2.thedogapi.com/images/${props.breed.reference_image_id}.jpg`}
               alt={props.breed.name}
             />
           </div>
