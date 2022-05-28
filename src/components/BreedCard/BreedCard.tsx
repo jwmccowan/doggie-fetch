@@ -1,6 +1,8 @@
 import { ErrorBoundary, JSXElement } from "solid-js";
 import { Breed } from "../../types/breed";
 import { BsHeartFill } from "solid-icons/bs";
+import { BsCameraFill } from "solid-icons/bs";
+import Card from "../Card";
 
 interface BreedFactProps {
   factName: string;
@@ -17,7 +19,7 @@ function BreedFact(props: BreedFactProps): JSXElement {
     return undefined;
   }
   return (
-    <p>
+    <p class="mb-2">
       <span class="font-bold">{props.factName}:&nbsp;</span>
       <span class="">{props.fact}</span>
     </p>
@@ -30,7 +32,7 @@ export interface BreedCardProps {
 
 export function BreedCard(props: BreedCardProps): JSXElement {
   return (
-    <div class="bg-white shadow-md rounded p-8">
+    <Card>
       <div class="flex flex-col gap-8 h-full">
         <ErrorBoundary
           fallback={() => (
@@ -62,26 +64,40 @@ export function BreedCard(props: BreedCardProps): JSXElement {
             />
           </div>
           <div>
-            <h2 class="text-3xl font-semibold mb-2">{props.breed.name}</h2>
-            <p class="text-gray-500 text-sm mb-4">{props.breed.temperament}</p>
-            <BreedFact factName="Life span" fact={props.breed.life_span} />
-            <BreedFact factName="Breed group" fact={props.breed.breed_group} />
-            <BreedFact factName="Origin" fact={props.breed.origin} />
-            <BreedFact factName="Bred for" fact={props.breed.bred_for} />
-            <BreedFact factName="Height" fact={props.breed.height.metric} />
-            <BreedFact factName="Weight" fact={props.breed.weight.metric} />
+            <h2 class="text-4xl font-bold mb-2 text-purple-600">
+              {props.breed.name}
+            </h2>
+            <p class="text-gray-500 text-sm mb-6">{props.breed.temperament}</p>
+            <h4 class="text-xl font-bold mb-4">Facts:</h4>
+            <div class="bg-purple-50 border-l-4 border-purple-700 p-4 -mx-4">
+              <BreedFact factName="Life span" fact={props.breed.life_span} />
+              <BreedFact
+                factName="Breed group"
+                fact={props.breed.breed_group}
+              />
+              <BreedFact factName="Origin" fact={props.breed.origin} />
+              <BreedFact factName="Bred for" fact={props.breed.bred_for} />
+              <BreedFact factName="Height" fact={props.breed.height.metric} />
+              <BreedFact factName="Weight" fact={props.breed.weight.metric} />
+            </div>
           </div>
-          <div class="flex justify-end mt-auto">
+          <div class="flex gap-2 justify-end mt-auto">
             <button
               onClick={() => {}}
-              class="bg-purple-500 text-white font-semibold py-2 px-4 rounded hover:bg-purple-600 inline-flex items-center text-md justify-center"
+              class="bg-purple-500 text-white font-semibold py-2 px-4 rounded hover:bg-purple-600 text-lg"
+            >
+              <BsCameraFill />
+            </button>
+            <button
+              onClick={() => {}}
+              class="bg-purple-500 text-white font-semibold py-2 px-4 rounded hover:bg-purple-600 inline-flex items-center text-lg justify-center"
             >
               <BsHeartFill class="mr-3" />
-              Favorite
+              <span class="text-base">Favorite</span>
             </button>
           </div>
         </ErrorBoundary>
       </div>
-    </div>
+    </Card>
   );
 }

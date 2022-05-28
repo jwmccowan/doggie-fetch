@@ -5,11 +5,11 @@ import { Container } from "../Container";
 
 export function Header(): JSX.Element {
   return (
-    <nav class="py-6 bg-purple-500">
+    <nav class="py-4 bg-purple-500">
       <Container>
         <div class="flex items-center text-white">
           <Link class="flex items-center" href="/">
-            <SiDatadog class="text-6xl" />
+            <SiDatadog class="text-5xl" />
             <h2 class="text-3xl font-bold ml-4">Doggie Fetch</h2>
           </Link>
           <ul class="ml-auto flex items-center">
